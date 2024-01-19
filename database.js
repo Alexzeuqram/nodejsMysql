@@ -1,8 +1,8 @@
 let config = {
-	host: "localhost",
+	host: "viaduct.proxy.rlwy.net",
 	user: "root",
-	password: "",
-	port: 3306,
-	database: "mi_blog"
+	password: "ef46gAFc3EGDBfe6E-1EhEg5-edfeDHf",
+	port: 15167,
+	database: "railway"
 };
 exports.config = config;
