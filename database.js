@@ -1,9 +1,10 @@
 let DATABASE_URL = {
     host: "aws.connect.psdb.cloud",
-    user: "3tn8tsbg6oc84fg9m8vf",
-    password: "pscale_pw_P3Gl8fLnoYCtR08enPNyFmiAukdUCGzR0Sn9UDRnT6V",
+    user: "j8nbh2x7l426fy132chb",
+    password: "pscale_pw_pLvgoIGQuuRWnJsvJ4lP0nhFzz3gR2ju0gIyYdJBckI",
     database: "node",
 };
+
 
 
 // Crear la URL de conexión
