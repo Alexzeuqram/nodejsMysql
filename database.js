@@ -1,12 +1,21 @@
 let DATABASE_URL = {
-database: "node",
-username: "q1w6b18huiayf07cqrie",
-host: "aws.connect.psdb.cloud",
-password: "pscale_pw_HlHrbKQr6PcFu9lfrYOEQY72EyBmMMoFiHxnPWNEZoA"
-
+	database: "node",
+	username: "w9dsnyag4u23qgxy52j7",
+	host: "aws.connect.psdb.cloud",
+	password: "pscale_pw_QbgzX9BM5QrxKIJMqHdq2uk4ck230oE6Bk9NXjZP97R"
+	  
 };
 
-let config = `mysql://${DATABASE_URL.username}:${DATABASE_URL.password}@${DATABASE_URL.host}/${DATABASE_URL.database}?ssl={"rejectUnauthorized":true}`;
+// Crear la URL de conexión con configuración SSL
+let config = {
+    host: DATABASE_URL.host,
+    user: DATABASE_URL.username,
+    password: DATABASE_URL.password,
+    database: DATABASE_URL.database,
+    ssl: {
+        rejectUnauthorized: true
+    }
+};
 
-
+// Exportar la configuración de conexión
 exports.config = config;
