@@ -1,8 +1,9 @@
 let DATABASE_URL = {
 	database: "node",
-	username: "w9dsnyag4u23qgxy52j7",
-	host: "aws.connect.psdb.cloud",
-	password: "pscale_pw_QbgzX9BM5QrxKIJMqHdq2uk4ck230oE6Bk9NXjZP97R"
+username: "r0tl3m3lz8ukh3ipd722",
+host: "aws.connect.psdb.cloud",
+password: "pscale_pw_sxCSz0GtDTZuzZ5KNO28fi2CJ0bQV1NNILer7jjJh6T"
+  
 	  
 };
 
