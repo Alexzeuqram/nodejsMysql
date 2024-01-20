@@ -4,11 +4,12 @@ const express = require("express"),
   (mysql = require("mysql")),
   (bodyParser = require("body-parser")),
   (myConnection = require("express-myconnection")),
-  (db = require("./database").config);
- 
+  (db = require("./database").config),
+  cors = require("cors");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(myConnection(mysql, db));
+app.use(cors());
 
 articulo = require("./routes/articulo");
 
