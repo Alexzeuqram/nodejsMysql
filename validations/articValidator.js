@@ -3,11 +3,11 @@ const { check, validationResult } = require("express-validator");
 const generateArtValidators = () => [
   check("titulo")
     .notEmpty()
-    .isLength({ max: 20 })
+    .isLength({ max: 200 })
     .withMessage("Titulo invalido"),
   check("contenido")
     .notEmpty()
-    .isLength({ max: 50 })
+    .isLength({ max: 500 })
     .withMessage("Contenido invalido"),
 ];
 const generateIdValidators = () => [

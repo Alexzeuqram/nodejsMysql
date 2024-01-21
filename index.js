@@ -6,8 +6,10 @@ const express = require("express"),
   (myConnection = require("express-myconnection")),
   (db = require("./database").config),
   cors = require("cors");
+  
 
-app.use(bodyParser.urlencoded({ extended: true }));
+ app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json({ extended: true }));
 app.use(myConnection(mysql, db));
 app.use(cors());
 

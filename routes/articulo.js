@@ -1,8 +1,11 @@
 const express = require("express");
+
 const router = express.Router();
 const multer = require("multer");
 const artController = require("../controllers/articuloController");
 const artValidator = require("../validations/articValidator");
+
+
 
 const almacenamiento = multer.diskStorage({
   destination: function (req, file, cb) {

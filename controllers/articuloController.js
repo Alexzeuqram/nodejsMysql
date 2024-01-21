@@ -5,6 +5,8 @@ const res = require("express/lib/response");
 const path = require("path");
 const Articulo = require("../modelos/Articulo");
 const { Op } = require("sequelize");
+const sizeOf = require('image-size');
+const tiposDeImagenAdmitidos = ['image/jpeg', 'image/png'];
 
 controller.getArt = (req, res) => {
   let consulta = "";
@@ -194,6 +196,7 @@ controller.subir = (req, res) => {
 
   if (
     extension !== "png" &&
+    extension !== "JPG" &&
     extension !== "jpg" &&
     extension !== "jpeg" &&
     extension !== "gif"
@@ -240,10 +243,8 @@ controller.imagen = (req, res) => {
   const nombreFichero = req.params.nombreFichero;
   const rutaFisica = `./imagenes/articulos/${nombreFichero}`;
 
-  fs.stat(rutaFisica, (error, existe) => {
-    if (existe) {
-      return res.sendFile(path.resolve(rutaFisica));
-    } else {
+  fs.readFile(rutaFisica, (error, datos) => {
+    if (error) {
       return res.status(404).json({
         status: "error",
         mensaje: "La imagen no existe",
@@ -252,6 +253,19 @@ controller.imagen = (req, res) => {
         rutaFisica: rutaFisica,
       });
     }
+
+    const dimensiones = sizeOf(datos);
+
+    if (!dimensiones || !tiposDeImagenAdmitidos.includes(dimensiones.type)) {
+      return res.status(400).json({
+        status: "error",
+        mensaje: "Formato de imagen no admitido",
+        fichero: nombreFichero,
+        rutaFisica: rutaFisica,
+      });
+    }
+
+    return res.sendFile(path.resolve(rutaFisica));
   });
 };
 
