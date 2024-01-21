@@ -240,35 +240,23 @@ controller.subir = (req, res) => {
 };
 
 controller.imagen = (req, res) => {
-  const nombreFichero = req.params.nombreFichero;
-  const rutaFisica = `./imagenes/articulos/${nombreFichero}`;
+  let fichero = req.params.fichero;
+  let ruta_fisica = "./imagenes/articulos/"+fichero;
 
-  fs.readFile(rutaFisica, (error, datos) => {
-    if (error) {
-      return res.status(404).json({
-        status: "error",
-        mensaje: "La imagen no existe",
-        existe: false,
-        fichero: nombreFichero,
-        rutaFisica: rutaFisica,
-      });
-    }
-
-    const dimensiones = sizeOf(datos);
-
-    if (!dimensiones || !tiposDeImagenAdmitidos.includes(dimensiones.type)) {
-      return res.status(400).json({
-        status: "error",
-        mensaje: "Formato de imagen no admitido",
-        fichero: nombreFichero,
-        rutaFisica: rutaFisica,
-      });
-    }
-
-    return res.sendFile(path.resolve(rutaFisica));
-  });
-};
-
+  fs.stat(ruta_fisica, (error, existe) => {
+      if(existe) {
+          return res.sendFile(path.resolve(ruta_fisica));
+      }else{
+          return res.status(404).json({
+              status: "error",
+              mensaje: "La imagen no existe",
+              existe,
+              fichero,
+              ruta_fisica
+          });
+      }
+  })
+}
 controller.buscador = (req, res) => {
   const busqueda = req.params.busqueda;
 

@@ -25,7 +25,7 @@ router.post("/crear", artValidator.add, artController.postArt);
 router.delete("/articulo/:id", artController.deleteArt);
 router.put("/articulo/:id", artController.putArt);
 router.post("/subir-imagen/:id", subidas.single("file0"), artController.subir);
-router.get("/imagen/:nombreFichero", artController.imagen);
+router.get("/imagen/:fichero", artController.imagen);
 router.get("/buscar/:busqueda", artController.buscador);
 
 module.exports = router;
