@@ -106,7 +106,7 @@ controller.getArticulo = (req, res) => {
 
 
 controller.deleteArt = (req, res) => {
-  const articleId = req.params.id; L
+  const articleId = req.params.id; 
   const sql = "DELETE FROM articulos WHERE id = ?";
   
   req.getConnection((error, conn) => {
