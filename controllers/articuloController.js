@@ -104,44 +104,44 @@ controller.getArticulo = (req, res) => {
   });
 };
 
+
 controller.deleteArt = (req, res) => {
-  const sql = "DELETE from articulos WHERE id = ?";
+  const articleId = req.params.id; L
+  const sql = "DELETE FROM articulos WHERE id = ?";
+  
   req.getConnection((error, conn) => {
     if (error) {
       format.code = 500;
-      format.message = "Error al contactar la base de datos,";
+      format.message = "Error al contactar la base de datos";
       format.success = false;
-      res.status(500);
-      res.json(format);
+      res.status(500).json(format);
     } else {
-      conn.query(sql, [req.params.id], (err, results) => {
+      conn.query(sql, [articleId], (err, results) => {
         if (err) {
           format.code = 400;
           format.message = err.sqlMessage;
           format.success = false;
-          res.status(400);
-          res.json(format);
+          res.status(400).json(format);
         } else {
           if (results.affectedRows > 0) {
-            format.code = 204;
-            format.message = "Articulo eliminado";
+            format.code = 200;
+            format.message = "success";
             format.success = true;
-            format.data = results;
-            res.status(204);
-            res.json(format);
+            res.status(200).json(format);
           } else {
             format.code = 404;
-            format.message = "Error al eliminar el articulo";
+            format.message = "Artículo no encontrado";
             format.success = false;
-            format.data = results;
-            res.status(404);
-            res.json(format);
+            res.status(404).json(format);
           }
         }
       });
     }
   });
 };
+
+
+
 controller.putArt = (req, res) => {
   const sql = "UPDATE articulos SET ? WHERE id = ?";
   req.getConnection((error, conn) => {
