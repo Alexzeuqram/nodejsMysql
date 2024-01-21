@@ -61,7 +61,7 @@ controller.postArt = (req, res) => {
           res.json(format);
         } else {
           format.code = 201;
-          format.message = "User add";
+          format.message = "success";
           format.success = true;
           format.data = results.insertId;
           res.status(201);
