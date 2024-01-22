@@ -1,13 +1,11 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const { config } = require('../database'); 
+const { config } = require('../database');
 
 const sequelize = new Sequelize(config.database, config.user, config.password, {
     host: config.host,
     dialect: 'mysql',
     port: config.port,
 });
-
-
 
 const Articulo = sequelize.define('Articulo', {
     titulo: {
@@ -27,8 +25,8 @@ const Articulo = sequelize.define('Articulo', {
         defaultValue: 'default.png'
     }
 }, {
-    tableName: 'articulos', 
-    timestamps: false 
+    tableName: 'articulos',
+    timestamps: false
 });
 
 module.exports = Articulo;

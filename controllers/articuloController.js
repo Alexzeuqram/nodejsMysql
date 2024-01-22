@@ -140,8 +140,6 @@ controller.deleteArt = (req, res) => {
   });
 };
 
-
-
 controller.putArt = (req, res) => {
   const sql = "UPDATE articulos SET ? WHERE id = ?";
   req.getConnection((error, conn) => {
@@ -190,7 +188,6 @@ controller.subir = (req, res) => {
   }
 
   let archivo = req.file.originalname;
-
   let archivo_split = archivo.split(".");
   let extension = archivo_split[1];
 

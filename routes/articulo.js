@@ -5,8 +5,6 @@ const multer = require("multer");
 const artController = require("../controllers/articuloController");
 const artValidator = require("../validations/articValidator");
 
-
-
 const almacenamiento = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./imagenes/articulos/");
